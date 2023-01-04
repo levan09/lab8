@@ -1,0 +1,41 @@
+<h2>Add laptop</h2>
+
+<form [formGroup]="addForm" (ngSubmit)="addLaptop()">
+    <input formControlName="modelName" placeholder="model name" />
+    <input formControlName="price" placeholder="price" />
+    <button [disabled]="!addForm.valid" type="submit">Add</button>
+</form>
+
+
+<h2>Laptops</h2>
+
+<div class="table">
+    <form [formGroup]="editForm">
+        <div *ngFor="let laptop of laptops" class="row" [ngClass]="{selected: editingLaptop?.id == laptop.id}">
+            <div class="cell">
+                <span *ngIf="editingLaptop?.id != laptop.id"> {{laptop.modelName}} </span>
+                <input *ngIf="editingLaptop?.id == laptop.id" formControlName="modelName" placeholder="name" />
+
+                <span *ngIf="editingLaptop?.id != laptop.id"> {{ laptop.price }} </span>
+                <input *ngIf="editingLaptop?.id == laptop.id" formControlName="price" placeholder="price" />
+
+                <button (click)="editLaptop(laptop) "*ngIf="editingLaptop?.id != laptop.id">edit</button>
+                <button (click)="updateLaptop()" *ngIf="editingLaptop?.id == laptop.id" [disabled]="!editForm.valid" >Save</button>
+                <button (click)="cancelEdit()" *ngIf="editingLaptop?.id == laptop.id" >Cancel</button>
+                <button (click)="deleteLaptop(laptop.id)" *ngIf="editingLaptop?.id != laptop.id" >Delete</button>
+            </div>
+            
+        </div>
+            
+            
+    </form>
+</div>
+
+<h2>Fast search</h2>
+
+<input [formControl]="searchField" placeholder="search laptop" />
+<br>
+
+<div *ngFor="let laptop of searchResult$ | async">
+    {{laptop.modelName}} {{laptop.price}}
+</div>

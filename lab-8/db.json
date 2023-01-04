@@ -1,0 +1,19 @@
+{
+  "laptops": [
+    {
+      "id": "b06e8767-efb6-4746-8a24-e8bf34d60a65",
+      "modelName": "lenovoasdas",
+      "price": "123123asdas"
+    },
+    {
+      "id": "cfbafd18-7aa9-49f7-80c9-a39e49fae7fa",
+      "modelName": "nokia",
+      "price": "3200000"
+    },
+    {
+      "id": "c02c170c-39ee-4918-a660-d67d5c6dad44",
+      "modelName": "asdfa",
+      "price": "123123"
+    }
+  ]
+}
